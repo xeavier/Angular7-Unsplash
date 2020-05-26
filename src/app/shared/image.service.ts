@@ -16,9 +16,7 @@ export class ImageService {
    return this.global.UNSPLASH_API.photos.listPhotos(page, perPage, orderBy).then(response => response.json()).then(json => json.results);
   } 
 
-  getstats(id: string){
-   return this.global.UNSPLASH_API.photos.getPhotoStats(id).then(response => response.json()).then(json => json.results);
-  } 
+  
 
   ///////////////
 
@@ -40,6 +38,14 @@ export class ImageService {
   getImageById(id: String, width: number, height:number, rectangle:number) : Promise<any>{
     return this.global.UNSPLASH_API.photos.getPhoto(id, width, height, rectangle).then(response => response.json()).then(json => json.results);;
   }
+
+  getstats(id: string){
+   return this.global.UNSPLASH_API.photos.getPhotoStats(id).then(response => response.json()).then(json => json.results);
+  } 
+
+  getuserlikeedphoto(id: string){
+   return this.global.UNSPLASH_API.photos.likePhoto(id).then(response => response.json()).then(json => json.results);
+  } 
 
   getRandomImage() : Promise<any>{
    return this.global.UNSPLASH_API.photos.getRandomPhoto()
