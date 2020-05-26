@@ -6,9 +6,9 @@ import { Global } from '../providers/global';
 })
 export class ImageService {
   public mierda: any;
-  public page: number:
-  public perPage:number:
-  public orderBy: string:
+  public page: number;
+  public perPage:number;
+  public orderBy: string;
 
   constructor(private global: Global) { }
 
@@ -16,7 +16,11 @@ export class ImageService {
    return this.global.UNSPLASH_API.photos.listPhotos(page, perPage, orderBy).then(response => response.json()).then(json => json.results);
   } 
 
- ///////////////
+  getstats(id: string){
+   return this.global.UNSPLASH_API.photos.getPhotoStats(id).then(response => response.json()).then(json => json.results);
+  } 
+
+  ///////////////
 
   searchImages(userInput: String, pageIndex:number = 1, elementsPerPage:number = 30): Promise<any> {
   return this.global.UNSPLASH_API.search.photos(userInput, pageIndex, elementsPerPage).then(response => response.json()).then(json => json.results);
